@@ -1,10 +1,24 @@
 import fastify from "fastify"
-
-const app = fastify()
+import {
+  serializerCompiler,
+  validatorCompiler,
+  type ZodTypeProvider,
+} from 'fastify-type-provider-zod'
+import { createGoalRoute } from "./routes/create-goal"
 
 const PORT = 4000
 
+//V1: without fastify-type-provider-zod
+// const app = fastify()
+
+//V2: with fastify-type-provider-zod
+const app = fastify().withTypeProvider<ZodTypeProvider>()
+app.setSerializerCompiler(serializerCompiler)
+app.setValidatorCompiler(validatorCompiler)
+
 app.get("/", () => {return "Hello, world!"})
+
+app.register(createGoalRoute)
 
 app
   .listen({port: PORT})

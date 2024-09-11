@@ -1,0 +1,13 @@
+###
+//Check if server is online
+GET http://localhost:4000/
+
+###
+//Create goal
+POST http://localhost:4000/goals
+Content-Type: application/json
+
+{
+  "title": "Dormir +",
+  "desiredWeeklyFrequency": 7
+}
