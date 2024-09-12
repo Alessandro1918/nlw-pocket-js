@@ -17,5 +17,5 @@ export async function createGoal({
 
     const goal = result[0]
 
-    return {goal}
+    return { goal }
 }

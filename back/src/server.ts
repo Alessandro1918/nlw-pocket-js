@@ -6,6 +6,7 @@ import {
 } from 'fastify-type-provider-zod'
 import { createGoalRoute } from "./routes/create-goal"
 import { getWeekPendingGoalsRoute } from "./routes/get-week-pending-goals"
+import { createGoalCompletionRoute } from "./routes/create-goal-completion"
 
 const PORT = 4000
 
@@ -21,6 +22,7 @@ app.get("/", () => {return "Hello, world!"})
 
 app.register(createGoalRoute)
 app.register(getWeekPendingGoalsRoute)
+app.register(createGoalCompletionRoute)
 
 app
   .listen({port: PORT})
