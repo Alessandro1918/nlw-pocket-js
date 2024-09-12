@@ -5,6 +5,7 @@ import {
   type ZodTypeProvider,
 } from 'fastify-type-provider-zod'
 import { createGoalRoute } from "./routes/create-goal"
+import { getWeekPendingGoalsRoute } from "./routes/get-week-pending-goals"
 
 const PORT = 4000
 
@@ -19,6 +20,7 @@ app.setValidatorCompiler(validatorCompiler)
 app.get("/", () => {return "Hello, world!"})
 
 app.register(createGoalRoute)
+app.register(getWeekPendingGoalsRoute)
 
 app
   .listen({port: PORT})
