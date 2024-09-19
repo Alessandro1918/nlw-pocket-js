@@ -25,6 +25,8 @@ import { z } from 'zod'
 // }
 
 //V2: with FastifyPluginAsyncZod
+//https://github.com/turkerdev/fastify-type-provider-zod
+// const plugin: FastifyPluginAsyncZod = async function (fastify, _opts) {
 export const createGoalRoute: FastifyPluginAsyncZod = async app => {
   app.post(
     //1st param:

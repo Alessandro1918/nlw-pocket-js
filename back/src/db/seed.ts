@@ -7,7 +7,7 @@ async function seed() {
   await db.delete(goalsCompleted)
   await db.delete(goals)
 
-  //goal 3 is still incompleted, doesn't need to de-structured it and use it on the next insert
+  //goal 3 will be seeded as "still incompleted", so I don't need to de-structured it to use it on the next insert
   const [goal1, goal2] = await db
     .insert(goals)
     .values([

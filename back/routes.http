@@ -24,3 +24,7 @@ Content-Type: application/json
 {
   "goalId": "wkqyd1kezkauv9y15anxezvj"
 }
+
+###
+//Get weekly summary
+GET http://localhost:4000/summary
