@@ -82,6 +82,16 @@ export async function getWeekSummary() {
       .groupBy(goalsCompletedInWeek.completedAtDate)
   )
 
+  // Optional, but helps Typescript infer the type of this new SQL collumn
+  // Record: object
+  // []: array
+  // GoalsPerDay: Array of objects; each object with a key (a date string ) and a {isDataView, title, createdAt}
+  type GoalsPerDay = Record<string, {
+    id: string,
+    title: string,
+    completedAt: string
+  }[]>
+
   const result = 
     await db
       .with(goalsCreatedUpToWeek, goalsCompletedInWeek, goalsCompletedByWeekDay)
@@ -93,7 +103,7 @@ export async function getWeekSummary() {
         total: sql`(SELECT SUM(${goalsCreatedUpToWeek.desiredWeeklyFrequency}) FROM ${goalsCreatedUpToWeek})`.mapWith(Number),
         //"completed" and "total" were returning 2x, because "goalsCompletedByWeekDay" returned 2 objects inside array.
         //So, I used "JSON_OBJECT_AGG" (instead of "JSON_BUILD_OBJECT") to aggregate the results.
-        goalsPerDay: sql`
+        goalsPerDay: sql<GoalsPerDay>`
           JSON_OBJECT_AGG(
             ${goalsCompletedByWeekDay.completedAtDate}, ${goalsCompletedByWeekDay.completions}
           )
