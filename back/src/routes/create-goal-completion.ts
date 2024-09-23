@@ -15,15 +15,15 @@ export const createGoalCompletionRoute: FastifyPluginAsyncZod = async app => {
     async request => {
       const { goalId } = request.body
 
-      // const result = await createGoalCompletion({
-      //   goalId
-      // })
-      // return result
-
-      //Or, returning nothing:
-      await createGoalCompletion({
+      const result = await createGoalCompletion({
         goalId
       })
+      return result
+
+      //Or, returning nothing (will also ommit the "Error" message):
+      // await createGoalCompletion({
+      //   goalId
+      // })
     }
   )
 }

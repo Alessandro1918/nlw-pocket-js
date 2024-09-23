@@ -1,7 +1,7 @@
 import { db } from "@/db"
 import { goals, goalsCompleted } from "@/db/schema"
 import dayjs from "dayjs"
-import { and, count, eq, gte, lte, sql } from 'drizzle-orm'
+import { and, desc, eq, gte, lte, sql } from 'drizzle-orm'
 
 export async function getWeekSummary() {
 
@@ -58,6 +58,7 @@ export async function getWeekSummary() {
           lte(goalsCompleted.createdAt, lastDayOfTheWeek)
         )
       )
+      .orderBy(goalsCompleted.createdAt)
   )
 
   // Common Table Expression #3
@@ -80,6 +81,7 @@ export async function getWeekSummary() {
       })
       .from(goalsCompletedInWeek)
       .groupBy(goalsCompletedInWeek.completedAtDate)
+      .orderBy(desc(goalsCompletedInWeek.completedAtDate))
   )
 
   // Optional, but helps Typescript infer the type of this new SQL collumn
