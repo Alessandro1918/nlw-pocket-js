@@ -10,7 +10,7 @@ export function CreateGoal() {
     <DialogContent>
       <div className="flex flex-col gap-6 h-full">
         <div className="flex flex-col gap-3">
-          {/* items-center justify-between: center X axys, push to Y axys ends */}
+          {/* CSS OBS: items-center justify-between: center X axys, push to Y axys ends */}
           <div className="flex items-center justify-between">
             <DialogTitle>Cadastrar meta</DialogTitle>
             <DialogClose><X className="size-5 text-zinc-600"/></DialogClose>
@@ -21,7 +21,7 @@ export function CreateGoal() {
           </DialogDescription>
         </div>
 
-        {/* flex-1: take up as much space as possible */}
+        {/* CSS OBS: flex-1: take up as much space as possible */}
         <form action="" className="flex-1 flex flex-col justify-between">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-2">

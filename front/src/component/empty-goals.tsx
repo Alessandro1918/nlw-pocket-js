@@ -6,7 +6,7 @@ import letsStart from "../assets/rocket-launch-illustration.svg"
 
 export function EmptyGoals() {
   return (
-    // items-center justify-center: center X, Y axys
+    // CSS OBS: items-center justify-center: center X, Y axys
     <div className="h-screen flex flex-col items-center justify-center gap-8">
       <img src={logo} alt="in.orbit"/>
       <img src={letsStart} alt="lets start"/>
