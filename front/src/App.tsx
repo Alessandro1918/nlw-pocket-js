@@ -6,19 +6,9 @@ import { Summary } from "./component/summary"
 import { useQuery } from "@tanstack/react-query"
 import { getSummary } from "./requests/get-summary"
 
-//Hover mouse @ back/src/services/get-week-summary.ts "summary" result, copy it's type
-// type SummaryResponse = {
-//   completed: number;
-//   total: number;
-//   goalsPerDay: Record<string, {
-//     id: string;
-//     title: string;
-//     completedAt: string;
-//   }[]>;
-// }
-
 export function App() {
 
+  //V1 - useState, useEffect
   // const [ summary, setSummary ] = useState<SummaryResponse | null>(null)
   // useEffect(() => {
   //   fetch("http://localhost:4000/summary")
@@ -26,6 +16,7 @@ export function App() {
   //     .then(data => {setSummary(data.summary)})
   // }, [])
 
+  //V2 - useQuery
   // const { data } = useQuery<SummaryResponse>({
   //   queryKey: [ "summary" ],
   //   queryFn: async () => {

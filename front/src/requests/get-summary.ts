@@ -1,3 +1,4 @@
+//Hover mouse @ back/src/services/get-week-summary.ts "summary" result, copy it's type
 type SummaryResponse = {
   completed: number;
   total: number;
