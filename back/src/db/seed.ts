@@ -26,11 +26,9 @@ async function seed() {
     ])
     .returning()
 
-  const startOfWeek = dayjs().startOf('week')   //date of the last Sunday
-
   await db.insert(goalsCompleted).values([
-    { goalId: goal1.id, createdAt: startOfWeek.toDate() },                //completed at the same day it was saved (Sunday)
-    { goalId: goal2.id, createdAt: startOfWeek.add(1, 'day').toDate() },  //completed one day after it was saved (Sunday + 1 = Monday)
+    { goalId: goal1.id, createdAt: goal1.createdAt }, 
+    { goalId: goal2.id, createdAt: dayjs(goal2.createdAt).add(1, "day").add(42, "minutes").toDate() },
   ])
 }
 

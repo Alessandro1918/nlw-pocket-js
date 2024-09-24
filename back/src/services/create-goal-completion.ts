@@ -11,6 +11,10 @@ export async function createGoalCompletion({
   goalId, 
 }: CreateGoalCompletionInterface) {
 
+  //Before I simply add a new completion record to the table,
+  //check how many times I've already completed this goal, 
+  //so I don't over-complete it.
+
   const firstDayOfTheWeek = dayjs().startOf("week").toDate()
   const lastDayOfTheWeek = dayjs().endOf("week").toDate()
 
@@ -55,8 +59,8 @@ export async function createGoalCompletion({
   
   // [
   //   {
-  //     "desiredWeeklyFrequency": 7,
   //     "completionCount": 3
+  //     "desiredWeeklyFrequency": 7,
   //   }
   // ]
 
