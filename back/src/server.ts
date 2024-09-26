@@ -10,7 +10,8 @@ import { getWeekPendingGoalsRoute } from "./routes/get-week-pending-goals"
 import { createGoalCompletionRoute } from "./routes/create-goal-completion"
 import { getWeekSummaryRoute } from "./routes/get-week-summary"
 
-const PORT = 4000
+const PORT = Number(process.env.PORT)
+const HOST = process.env.HOST
 
 //V1: without fastify-type-provider-zod
 // const app = fastify()
@@ -32,5 +33,5 @@ app.register(createGoalCompletionRoute)
 app.register(getWeekSummaryRoute)
 
 app
-  .listen({port: PORT})
-  .then(() => {console.log(`Server running on http://localhost:${PORT}`)})
+  .listen({port: PORT, host: HOST})
+  .then(() => {console.log(`Server running on http://${HOST}:${PORT}`)})
