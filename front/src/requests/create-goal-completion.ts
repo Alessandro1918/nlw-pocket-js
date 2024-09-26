@@ -1,5 +1,6 @@
 export async function createGoalCompletion(goalId: string) {
-  await fetch("http://localhost:4000/complete-goal", {
+  const VITE_BASE_URL_BACK = import.meta.env.VITE_BASE_URL_BACK
+  await fetch(`${VITE_BASE_URL_BACK}/complete-goal`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
